@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jen Baik — Jen-ergy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --white: #ffffff;
+  --bg-alt: #EEF4FB;
+  --accent: #1A6CF5;
+  --accent-bright: #3D85F7;
+  --accent-glow: rgba(26, 108, 245, 0.12);
+  --pop: #FFB930;
+  --pop-soft: #FFF3D6;
+  --text: #2C3345;
+  --text-light: #5F6983;
+  --text-faint: #9BA3B8;
+  --border: rgba(26, 108, 245, 0.08);
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --max-w: 1100px;
+  --section-py: 64px;
+}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body); background: var(--white);
+  color: var(--text); line-height: 1.72; font-weight: 400; overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--accent-bright); }
+::selection { background: var(--pop); color: var(--text); }
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.88); backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border); transition: box-shadow .3s;
+}
+.nav.scrolled { box-shadow: 0 4px 24px rgba(26,108,245,0.06); }
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 56px;
+}
+.nav-logo {
+  font-family: var(--font-head); font-weight: 700; font-size: 1.05rem;
+  color: var(--accent); letter-spacing: -0.02em;
+}
+.nav-links { display: flex; gap: 26px; list-style: none; }
+.nav-links a {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-light); transition: color .2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span {
+  display: block; width: 20px; height: 2px; background: var(--text);
+  margin: 5px 0; border-radius: 2px; transition: .3s;
+}
+
+.section-white { background: var(--white); }
+.section-blue { background: var(--bg-alt); }
+section { padding: var(--section-py) 32px; }
+.container { max-width: var(--max-w); margin: 0 auto; }
+.section-label {
+  font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent);
+  margin-bottom: 4px;
+}
+.section-title {
+  font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700; color: var(--text); line-height: 1.2;
+  margin-bottom: 20px; letter-spacing: -0.03em;
+}
+
+.hero {
+  min-height: 0; display: flex; align-items: center;
+  padding: 100px 32px 56px; position: relative; overflow: hidden; background: var(--white);
+}
+.hero::before {
+  content: ''; position: absolute; top: -120px; right: -80px;
+  width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,108,245,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -60px; left: -40px;
+  width: 360px; height: 360px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,185,48,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; display: flex; align-items: center; gap: 48px; }
+.hero-text { flex: 1; }
+.hero-photo {
+  flex-shrink: 0; width: 240px; height: 240px; border-radius: 50%;
+  border: 3px solid var(--border);
+  background: var(--bg-alt);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+  box-shadow: 0 8px 40px rgba(26,108,245,0.08);
+  order: -1;
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-photo-placeholder {
+  color: var(--text-faint); text-align: center; font-size: 0.78rem;
+}
+.hero-photo-placeholder svg { margin-bottom: 6px; opacity: .35; }
+.hero-now {
+  margin-top: 24px; padding: 14px 20px;
+  background: var(--bg-alt); border-radius: var(--radius);
+  border-left: 3px solid var(--pop);
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+}
+.hero-now-label {
+  font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent);
+  white-space: nowrap;
+}
+.hero-now-text { font-size: 0.92rem; color: var(--text-light); }
+.hero-now-link {
+  font-family: var(--font-head); font-size: 0.82rem; font-weight: 600;
+  color: var(--accent); white-space: nowrap;
+}
+.hero-now-link:hover { color: var(--accent-bright); }
+.hero-name {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: clamp(3rem, 7.5vw, 5.8rem); line-height: 1;
+  color: var(--text); letter-spacing: -0.045em;
+}
+.hero-name .glow {
+  background: linear-gradient(135deg, var(--accent) 0%, #4f9cf7 60%, var(--pop) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-tagline {
+  font-family: var(--font-head); font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-light); margin-top: 14px; font-weight: 400; letter-spacing: -0.01em;
+}
+.hero-tagline em {
+  font-style: normal; font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--pop));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-mission {
+  max-width: 560px; margin-top: 16px; font-size: 1.02rem;
+  color: var(--text-light); line-height: 1.75;
+}
+
+
+.about-text { max-width: 680px; }
+.about-text p { margin-bottom: 14px; font-size: 1rem; color: var(--text); }
+.about-text p:last-child { margin-bottom: 0; }
+.about-text strong { color: var(--text); font-weight: 600; }
+
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+  position: relative; overflow: hidden;
+}
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--pop));
+  transform: scaleX(0); transform-origin: left; transition: transform .35s;
+}
+.card:hover {
+  border-color: rgba(26,108,245,0.15); transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(26,108,245,0.07);
+}
+.card:hover::before { transform: scaleX(1); }
+.card-icon {
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  background: var(--bg-alt); display: flex; align-items: center;
+  justify-content: center; margin-bottom: 12px; color: var(--accent);
+}
+.card-title {
+  font-family: var(--font-head); font-size: 1.05rem; font-weight: 700;
+  color: var(--text); margin-bottom: 8px; letter-spacing: -0.02em; line-height: 1.3;
+}
+.card-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+
+.photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.photo-slot {
+  aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden;
+  border: 2px dashed rgba(26,108,245,0.15); background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .3s, box-shadow .3s;
+}
+.photo-slot:hover {
+  border-color: rgba(26,108,245,0.3);
+  box-shadow: 0 4px 20px rgba(26,108,245,0.06);
+}
+.photo-slot-inner {
+  color: var(--text-faint); font-size: 0.78rem; text-align: center; padding: 12px;
+}
+.photo-slot-inner svg { margin: 0 auto 6px; opacity: .35; }
+.photo-caption {
+  font-size: 0.78rem; color: var(--text-light); margin-top: 6px; text-align: center;
+}
+.portfolio-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 20px; padding: 10px 22px;
+  border: 2px solid var(--accent); border-radius: 100px;
+  font-family: var(--font-head); font-size: 0.84rem; font-weight: 600;
+  color: var(--accent); transition: .25s;
+}
+.portfolio-link:hover {
+  background: var(--accent); color: var(--white);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.writing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.writing-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 20px;
+  transition: border-color .3s, transform .3s;
+}
+.writing-card:hover { border-color: rgba(26,108,245,0.18); transform: translateY(-3px); }
+.writing-card-badge {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 3px 10px; border-radius: 100px; margin-bottom: 10px;
+}
+.badge-article { background: rgba(26,108,245,0.08); color: var(--accent); }
+.badge-press { background: var(--pop-soft); color: #b8860b; }
+.writing-card-title {
+  font-family: var(--font-head); font-size: 1rem; font-weight: 600;
+  color: var(--text); margin-bottom: 6px; line-height: 1.35;
+}
+.writing-card-desc { font-size: 0.86rem; color: var(--text-light); margin-bottom: 12px; }
+.writing-card-link {
+  font-size: 0.82rem; font-weight: 600; color: var(--accent);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.writing-card-link:hover { color: var(--accent-bright); }
+
+.connect-links { display: flex; gap: 14px; margin-top: 2px; flex-wrap: wrap; }
+.connect-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 24px; border-radius: 100px;
+  font-family: var(--font-head); font-size: 0.88rem; font-weight: 600; transition: .25s;
+}
+.connect-btn.primary {
+  background: var(--accent); color: var(--white);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+.connect-btn.primary:hover {
+  background: var(--accent-bright); color: var(--white);
+  transform: translateY(-1px); box-shadow: 0 6px 24px rgba(26,108,245,0.18);
+}
+.connect-btn.secondary {
+  border: 2px solid var(--border); color: var(--text); background: var(--white);
+}
+.connect-btn.secondary:hover { border-color: var(--accent); color: var(--accent); }
+.connect-closing {
+  margin-top: 18px; font-size: 1.02rem; color: var(--text-light);
+  font-style: italic; max-width: 480px;
+}
+
+.footer {
+  padding: 28px 32px; text-align: center;
+  border-top: 1px solid var(--border);
+  font-size: 0.76rem; color: var(--text-faint); background: var(--white);
+}
+
+.fade-up {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .writing-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  :root { --section-py: 36px; }
+  section { padding: var(--section-py) 20px; }
+  .nav-inner { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; gap: 0;
+    position: absolute; top: 56px; left: 0; right: 0;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open a { display: block; padding: 14px 28px; }
+  .nav-toggle { display: block; }
+  .cards, .photo-grid, .writing-cards { grid-template-columns: 1fr; }
+  .hero { padding: 80px 20px 40px; }
+  .hero-content { flex-direction: column; gap: 28px; text-align: center; }
+  .hero-photo { width: 180px; height: 180px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" id="nav-logo"></a>
+    <ul class="nav-links" id="nav-links"></ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero section-white" id="hero">
+  <div class="container hero-content">
+    <div class="hero-photo" id="hero-photo">
+      <!-- Replace this div with: <img src="your-photo.jpg" alt="Jen Baik"> -->
+      <div class="hero-photo-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div>Photo</div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <h1 class="hero-name" id="hero-name"></h1>
+      <p class="hero-tagline" id="hero-tagline"></p>
+      <p class="hero-mission" id="hero-mission"></p>
+      <div class="hero-now" id="hero-now"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-blue" id="about">
+  <div class="container fade-up">
+    <p class="section-label">About</p>
+    <h2 class="section-title" id="about-title"></h2>
+    <div class="about-text" id="about-text"></div>
+  </div>
+</section>
+
+<section class="section-white" id="skills">
+  <div class="container fade-up">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title" id="skills-title"></h2>
+    <div class="cards" id="skills-cards"></div>
+  </div>
+</section>
+
+<section class="section-blue" id="purpose">
+  <div class="container fade-up">
+    <p class="section-label">Community</p>
+    <h2 class="section-title" id="purpose-title"></h2>
+    <div class="photo-grid" id="photo-grid"></div>
+    <a class="portfolio-link" id="portfolio-link" href="#"></a>
+  </div>
+</section>
+
+<section class="section-white" id="writing">
+  <div class="container fade-up">
+    <p class="section-label">Writing &amp; Press</p>
+    <h2 class="section-title" id="writing-title"></h2>
+    <div class="writing-cards" id="writing-cards"></div>
+  </div>
+</section>
+
+<section class="section-blue" id="connect">
+  <div class="container fade-up">
+    <p class="section-label">Connect</p>
+    <h2 class="section-title" id="connect-title"></h2>
+    <div class="connect-links" id="connect-links"></div>
+    <p class="connect-closing" id="connect-closing"></p>
+  </div>
+</section>
+
+<footer class="footer" id="footer"></footer>
+
+<script>
+/* ==========================================================================
+   CONTENT OBJECT — Edit all site copy here in one place
+   ========================================================================== */
+const CONTENT = {
+
+  // — Global —
+  name: "Jen Baik",
+  nameGlow: true,
+  navLogo: "Jen Baik",
+  navLinks: [
+    { label: "About", href: "#about" },
+    { label: "Capabilities", href: "#skills" },
+    { label: "Community", href: "#purpose" },
+    { label: "Writing", href: "#writing" },
+    { label: "Connect", href: "#connect" },
+  ],
+
+  // — Hero —
+  tagline: 'Product thinker. Community builder. Notorious for <em>Jen-ergy</em>.',
+  mission: "I build systems, communities, and momentum at the intersection of technology and human impact. Currently focused on AI Safety — because the systems we build next will shape everything that comes after.",
+
+  // — Now (inline teaser in hero) —
+  nowTeaser: "Completing BlueDot Impact's AGI Strategy course & organizing EA SF",
+  nowLink: "/now.html",
+  nowLinkText: "See my full /now page →",
+
+  // — About —
+  aboutTitle: "The short version",
+  aboutParagraphs: [
+    'The nickname started on a team at Google. Someone said, <strong>"You just have this… Jen-ergy,"</strong> and it stuck — across teams, across companies, across continents. It turns out that when you bring genuine intensity and care to a room, people remember the feeling long after they forget the agenda.',
+    "My background is product and operations at scale. At Google, I worked on products serving 300 million+ users, shipping GenAI features and building analytics systems from zero. Before that, I cut my teeth in consulting — Azure migrations, $2M contracts, the whole program-management gauntlet at Kin+Carta and Accenture. I know how to build things, and I know how to get things across a finish line.",
+    "But the work I'm proudest of is the pivot. In 2023, I started taking Effective Altruism seriously — first as a community builder inside Google, then as an organizer in San Francisco. I'm now fully focused on AI Safety: the governance, the strategy, the people infrastructure. I'm analytical but people-first. I build 0-to-1 systems. And I bring energy to every room I walk into.",
+  ],
+
+  // — Where I'm Most Useful —
+  skillsTitle: "Where I'm Most Useful",
+  skillsCards: [
+    {
+      icon: "strategy",
+      title: "Product Strategy & Operations",
+      desc: "Turning ambiguity into action. I've built 0-to-1 analytics systems, synthesized 50k+ monthly feedback submissions into product direction, and launched 40+ features including Gemini AI — all at 300MM+ user scale at Google.",
+    },
+    {
+      icon: "execution",
+      title: "Program Execution",
+      desc: "I get things across the finish line. Azure cloud migrations, $2M competitive strategy wins, cross-functional coordination at Kin+Carta and Accenture. I know how to ship in any organizational weather.",
+    },
+    {
+      icon: "community",
+      title: "Community Building",
+      desc: "EA @ Alphabet community lead. 845-person newsletter. Effective Altruism SF organizer. I build the connective tissue between people, ideas, and institutions — especially in AI Safety.",
+    },
+    {
+      icon: "field",
+      title: "Field Building & Governance",
+      desc: "Currently deep in AGI strategy, AI governance frameworks, and the question of how to build institutional infrastructure that scales trust. Bridging the gap between technical research and people operations.",
+    },
+  ],
+
+  // — Purpose in Action —
+  purposeTitle: "Purpose in Action",
+  purposePhotos: [
+    { caption: "EA Giving Campaign 2024" },
+    { caption: "Google Community Event" },
+    { caption: "SF Organizer Meetup" },
+    { caption: "BlueDot Impact Cohort" },
+  ],
+  portfolioLink: "#", // ← Replace with your Milanote link
+  portfolioText: "Check out my full community portfolio →",
+
+  // — Writing & Press —
+  writingTitle: "Writing & Press",
+  writingCards: [
+    {
+      badge: "article",
+      title: "Why I Left Big Tech for AI Safety",
+      desc: "On making the hardest career decision of my life — and why it was the easiest.",
+      link: "#",
+      linkText: "Read on Medium →",
+    },
+    {
+      badge: "press",
+      title: "Featured in Business Insider",
+      desc: "On EA community building, career pivots, and what it means to take AI risk seriously.",
+      link: "#",
+      linkText: "Read the feature →",
+    },
+    {
+      badge: "article",
+      title: "Community Infrastructure is a Public Good",
+      desc: "What I learned building EA communities inside and outside of corporate walls.",
+      link: "#",
+      linkText: "Read on Medium →",
+    },
+  ],
+
+  // — Connect —
+  connectTitle: "Let's make something happen",
+  connectLinks: [
+    { label: "LinkedIn", href: "#", type: "primary", icon: "linkedin" },
+    { label: "Get in touch", href: "#", type: "secondary", icon: "form" }, // ← Replace href with Google Form link
+  ],
+  connectClosing: "If you're building something that matters, I probably want to hear about it.",
+
+  // — Footer —
+  footer: "© 2025 Jen Baik. Built with Jen-ergy.",
+};
+
+/* ==========================================================================
+   SVG ICONS
+   ========================================================================== */
+const ICONS = {
+  strategy: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>',
+  execution: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+  community: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  field: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+  linkedin: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
+  form: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+};
+
+/* ==========================================================================
+   RENDER
+   ========================================================================== */
+(function render() {
+  document.getElementById("nav-logo").textContent = CONTENT.navLogo;
+  const navUl = document.getElementById("nav-links");
+  CONTENT.navLinks.forEach(l => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = l.href; a.textContent = l.label;
+    a.addEventListener("click", () => navUl.classList.remove("open"));
+    li.appendChild(a); navUl.appendChild(li);
+  });
+
+  const heroName = document.getElementById("hero-name");
+  heroName.innerHTML = CONTENT.nameGlow
+    ? `<span class="glow">${CONTENT.name}</span>`
+    : CONTENT.name;
+  document.getElementById("hero-tagline").innerHTML = CONTENT.tagline;
+  document.getElementById("hero-mission").textContent = CONTENT.mission;
+
+  // Now teaser (inline in hero)
+  document.getElementById("hero-now").innerHTML = `
+    <span class="hero-now-label">Currently up to:</span>
+    <span class="hero-now-text">${CONTENT.nowTeaser}</span>
+    <a class="hero-now-link" href="${CONTENT.nowLink}">${CONTENT.nowLinkText}</a>
+  `;
+
+  document.getElementById("about-title").textContent = CONTENT.aboutTitle;
+  const aboutC = document.getElementById("about-text");
+  CONTENT.aboutParagraphs.forEach(p => {
+    const el = document.createElement("p"); el.innerHTML = p; aboutC.appendChild(el);
+  });
+
+  document.getElementById("skills-title").textContent = CONTENT.skillsTitle;
+  const skillsC = document.getElementById("skills-cards");
+  CONTENT.skillsCards.forEach(c => {
+    const d = document.createElement("div"); d.className = "card";
+    d.innerHTML = `
+      <div class="card-icon">${ICONS[c.icon] || ''}</div>
+      <h3 class="card-title">${c.title}</h3>
+      <p class="card-desc">${c.desc}</p>`;
+    skillsC.appendChild(d);
+  });
+
+  document.getElementById("purpose-title").textContent = CONTENT.purposeTitle;
+  const photoC = document.getElementById("photo-grid");
+  CONTENT.purposePhotos.forEach(p => {
+    const w = document.createElement("div");
+    w.innerHTML = `
+      <div class="photo-slot">
+        <div class="photo-slot-inner">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <div>Photo</div>
+        </div>
+      </div>
+      <p class="photo-caption">${p.caption}</p>`;
+    photoC.appendChild(w);
+  });
+  const pLink = document.getElementById("portfolio-link");
+  pLink.href = CONTENT.portfolioLink;
+  pLink.textContent = CONTENT.portfolioText;
+
+  document.getElementById("writing-title").textContent = CONTENT.writingTitle;
+  const writC = document.getElementById("writing-cards");
+  CONTENT.writingCards.forEach(c => {
+    const d = document.createElement("div"); d.className = "writing-card";
+    const bc = c.badge === "press" ? "badge-press" : "badge-article";
+    const bl = c.badge === "press" ? "Press" : "Article";
+    d.innerHTML = `
+      <span class="writing-card-badge ${bc}">${bl}</span>
+      <h3 class="writing-card-title">${c.title}</h3>
+      <p class="writing-card-desc">${c.desc}</p>
+      <a class="writing-card-link" href="${c.link}">${c.linkText}</a>`;
+    writC.appendChild(d);
+  });
+
+  document.getElementById("connect-title").textContent = CONTENT.connectTitle;
+  const conC = document.getElementById("connect-links");
+  CONTENT.connectLinks.forEach(l => {
+    const a = document.createElement("a");
+    a.className = `connect-btn ${l.type}`; a.href = l.href;
+    a.innerHTML = (ICONS[l.icon] || "") + " " + l.label;
+    conC.appendChild(a);
+  });
+  document.getElementById("connect-closing").textContent = CONTENT.connectClosing;
+
+  document.getElementById("footer").textContent = CONTENT.footer;
+})();
+
+/* ==========================================================================
+   INTERACTIONS
+   ========================================================================== */
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 20);
+}, { passive: true });
+
+document.getElementById("nav-toggle").addEventListener("click", () => {
+  document.getElementById("nav-links").classList.toggle("open");
+});
+
+const faders = document.querySelectorAll(".fade-up");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("visible"); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+faders.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
