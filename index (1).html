@@ -153,10 +153,27 @@ section { padding: var(--section-py) 32px; }
 }
 
 
-.about-text { max-width: 680px; }
+.about-text { max-width: 720px; }
 .about-text p { margin-bottom: 14px; font-size: 1rem; color: var(--text); }
 .about-text p:last-child { margin-bottom: 0; }
 .about-text strong { color: var(--text); font-weight: 600; }
+.about-group { margin-bottom: 24px; }
+.about-group:last-child { margin-bottom: 0; }
+.about-group-header {
+  font-family: var(--font-head); font-size: 1.05rem; font-weight: 700;
+  color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.about-group-header .emoji { margin-right: 6px; }
+.about-group ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.about-group li {
+  font-size: 0.96rem; color: var(--text); line-height: 1.7;
+  padding-left: 18px; position: relative;
+}
+.about-group li::before {
+  content: ''; position: absolute; left: 0; top: 10px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--pop); box-shadow: 0 0 0 2px var(--pop-soft);
+}
 
 .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .card {
@@ -262,6 +279,10 @@ section { padding: var(--section-py) 32px; }
 .connect-closing {
   margin-top: 18px; font-size: 1.02rem; color: var(--text-light);
   font-style: italic; max-width: 480px;
+}
+.connect-email {
+  margin-top: 16px; font-size: 0.95rem; color: var(--text);
+  font-weight: 500;
 }
 
 .footer {
@@ -369,7 +390,7 @@ section { padding: var(--section-py) 32px; }
     <p class="section-label">Connect</p>
     <h2 class="section-title" id="connect-title"></h2>
     <div class="connect-links" id="connect-links"></div>
-    <p class="connect-closing" id="connect-closing"></p>
+    <p class="connect-email" id="connect-email"></p>
   </div>
 </section>
 
@@ -394,44 +415,66 @@ const CONTENT = {
   ],
 
   // — Hero —
-  tagline: 'Product thinker. Analytica do-er. Community builder. Notorious for <em>Jen-ergy</em>.',
+  tagline: 'Product thinker. Analytical do-er. Community builder. Notorious for <em>Jen-ergy</em>.',
   mission: "I build systems, communities, and momentum at the intersection of technology and human impact. My personal mission is to be part of reducing suffering & societal harm now and in the future.",
 
   // — Now (inline teaser in hero) —
   nowTeaser: "Effective Altruism San Francisco Lead, Generalist Support to AI Security Accelerator, Independent Research of ensuring safe AI in societal proliferation",
   nowLink: "/now.html",
-  nowLinkText: "See my full /now page →",
+  nowLinkText: "See my full /now page \u2192",
 
   // — About —
-  aboutTitle: "How I've been shaped",
-  aboutParagraphs: [
-    'Values: As a child of Korean immigrant parents, I've driven by a sense of <strong>responsibility</strong>: to my family, to greater humanity, and even to coexisting biological creatures. (I'm vegan/vegetarian!),
-    "Work: My career has opened remarkable doors, and I've built a reputation on taking every one of them seriously. At Google, I got to serve 300 million+ monthly users of Google Meet, advocating for their product needs and building analytics systems from zero. Before that, I managed a development team of 40+ developers across 3 workstreams for the execution of a massive Cloud migration and drove a marketing product strategy for a $450 AUM Asset Management client- through my time at Accenture and Kin+Carta. I've cultivated an aptitutde for thinking incisively and driving things across a finish line.",
-    "Jen-ergy: I sprinkle a bit of aliveness into my team and stakeholder interactions. As a servant leader, I am motivated by the prospect of making the lives of people around me better & easier.",
+  aboutTitle: "How I\u2019ve been shaped",
+  aboutGroups: [
+    {
+      emoji: "\uD83C\uDF0D",
+      header: "Values",
+      bullets: [
+        "As a child of Korean immigrant parents, I\u2019m driven by a sense of responsibility on a mission to serve greater humanity.",
+      ],
+    },
+    {
+      emoji: "\uD83D\uDCBB",
+      header: "Work",
+      bullets: [
+        "My career has opened remarkable doors, and I\u2019ve built a reputation on taking every one of them seriously.",
+        "At Google, I got to serve 300 million+ monthly users of Google Meet, advocating for their product needs through analytical data insights and building systems from zero.",
+        "Before that, I managed a development team of 40+ developers across 3 workstreams for the execution of a massive Cloud migration and drove a marketing product strategy for a $450 AUM Asset Management client.",
+        "I\u2019ve cultivated an aptitude for thinking incisively and driving things across a finish line.",
+      ],
+    },
+    {
+      emoji: "\u2728",
+      header: "Jen-ergy",
+      bullets: [
+        "I sprinkle a bit of aliveness into my team and stakeholder interactions. I see beyond the work and integrate with the people behind it.",
+        "As a servant leader, I step up and take initiative, motivated by being additive in value. For example: I come to meetings with prepared due diligence and err on caution & resourcefulness before inquiring for your time.",
+      ],
+    },
   ],
 
   // — Where I'm Most Useful —
-  skillsTitle: "Where I'm Most Useful",
+  skillsTitle: "Where I\u2019m Most Useful",
   skillsCards: [
     {
       icon: "strategy",
       title: "Product Strategy & Operations",
-      desc: "Turning ambiguity & data into insight &action. I've built 0-to-1 analytics systems, synthesized 50k+ monthly feedback submissions into product direction, and supported the launch of 40+ features including Gemini AI — all at 300MM+ user scale at Google.",
+      desc: "Turning ambiguity & data into insight & action. I\u2019ve built 0-to-1 analytics systems, synthesized 50k+ monthly feedback data into product direction, and supported the launch of 40+ features including Gemini AI. I could do Business Reviews in my sleep!",
     },
     {
       icon: "execution",
       title: "Program Execution",
-      desc: "I get things across the finish line. I've managed Azure cloud migrations, multi-stakeholder & cross-functional coordination, and strategic user intiaitives. I know how to ship in any organizational weather.",
+      desc: "I get things across the finish line. I\u2019ve managed Azure cloud migrations, multi-client & cross-functional coordination, and strategic user initiatives. I know how to align day-to-day execution with big picture strategy.",
     },
     {
       icon: "community",
       title: "Community Building",
-      desc: "Former EA @ Alphabet community lead (800+ members), now Effective Altruism SF Lead. I build the connective tissue between people, ideas, and institutions — especially in AI Safety.",
+      desc: "Former EA @ Alphabet community lead (800+ members), now Effective Altruism SF Lead. I build the connective tissue between people, ideas, and institutions, especially in AI Safety.",
     },
     {
       icon: "field",
       title: "Personal Development & Coaching",
-      desc: "Social scientist in my academic discipline & at heart. I am intrigued by entanglements of the mind, how it gets in our way, and evolving ourselves",
+      desc: "Social scientist in my academic discipline & at heart. I am intrigued by entanglements of the mind, how it gets in our way, and evolving ourselves. I\u2019ve coached numerous early graduates in navigating their next steps and impact.",
     },
   ],
 
@@ -444,7 +487,7 @@ const CONTENT = {
     { caption: "Lightning Talk for gTech NYC on Cognitive Biases" },
   ],
   portfolioLink: "#", // ← Replace with your Milanote link
-  portfolioText: "Check out my full portfolio →",
+  portfolioText: "Check out my full portfolio \u2192",
 
   // — Writing & Press —
   writingTitle: "Writing & Press",
@@ -454,33 +497,33 @@ const CONTENT = {
       title: "Featured in Business Insider",
       desc: "On making the hardest career decision of my life, leaving my dream job for AI Safety.",
       link: "https://www.businessinsider.com/left-google-job-for-ai-safety-movement-hard-decision-2025-10",
-      linkText: "Read the feature →",
+      linkText: "Read the feature \u2192",
     },
-  {
+    {
       badge: "article",
       title: "Women empowerment on a global scale",
-      desc: "Outlined notes on the work of Melinda French Gates",
+      desc: "Outlined notes on the work of Melinda French Gates.",
       link: "https://medium.com/@jenbb/beyond-the-pay-gap-this-book-taught-me-true-feminism-1d9147a7a2a2",
-      linkText: "Read on Medium →",
+      linkText: "Read on Medium \u2192",
     },
     {
       badge: "article",
       title: "Personal reflections while working on a farm in Spain",
-      desc: "Diary of 10 days in a different walk of life",
+      desc: "Diary of 10 days in a different walk of life.",
       link: "https://medium.com/@jenbb/background-ec8b05e3ad35",
-      linkText: "Read on Medium →",
+      linkText: "Read on Medium \u2192",
     },
   ],
 
   // — Connect —
-  connectTitle: "Let's make something happen",
+  connectTitle: "Let\u2019s work together",
   connectLinks: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/jen-b-49a906114/", type: "primary", icon: "linkedin" },
-    { label: "Get in touch", href: "#", type: "secondary", icon: "form" }, // ← Replace href with Google Form link
   ],
+  connectEmail: "Get in Touch: email (at) jenbaik.com",
 
   // — Footer —
-  footer: "© 2026 Jen B. Built with Jen-ergy.",
+  footer: "\u00A9 2026 Jen B. Built with Jen-ergy.",
 };
 
 /* ==========================================================================
@@ -525,8 +568,13 @@ const ICONS = {
 
   document.getElementById("about-title").textContent = CONTENT.aboutTitle;
   const aboutC = document.getElementById("about-text");
-  CONTENT.aboutParagraphs.forEach(p => {
-    const el = document.createElement("p"); el.innerHTML = p; aboutC.appendChild(el);
+  CONTENT.aboutGroups.forEach(g => {
+    const div = document.createElement("div"); div.className = "about-group";
+    const bullets = g.bullets.map(b => `<li>${b}</li>`).join("");
+    div.innerHTML = `
+      <div class="about-group-header"><span class="emoji">${g.emoji}</span>${g.header}</div>
+      <ul>${bullets}</ul>`;
+    aboutC.appendChild(div);
   });
 
   document.getElementById("skills-title").textContent = CONTENT.skillsTitle;
@@ -580,7 +628,7 @@ const ICONS = {
     a.innerHTML = (ICONS[l.icon] || "") + " " + l.label;
     conC.appendChild(a);
   });
-  document.getElementById("connect-closing").textContent = CONTENT.connectClosing;
+  document.getElementById("connect-email").textContent = CONTENT.connectEmail;
 
   document.getElementById("footer").textContent = CONTENT.footer;
 })();
