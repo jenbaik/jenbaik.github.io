@@ -116,7 +116,16 @@ section { padding: var(--section-py) 32px; }
   margin-top: 24px; padding: 14px 20px;
   background: var(--bg-alt); border-radius: var(--radius);
   border-left: 3px solid var(--pop);
-  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+}
+.hero-now-list {
+  list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px;
+}
+.hero-now-list li {
+  font-size: 0.92rem; color: var(--text-light); padding-left: 16px; position: relative;
+}
+.hero-now-list li::before {
+  content: ''; position: absolute; left: 0; top: 8px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--pop);
 }
 .hero-now-label {
   font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
@@ -411,9 +420,11 @@ const CONTENT = {
   mission: "I build systems, communities, and momentum at the intersection of technology and human impact. My personal mission is to be part of reducing suffering & societal harm now and in the future.",
 
   // — Now (inline teaser in hero) —
-  nowTeaser: "Effective Altruism San Francisco Lead, Generalist Support to AI Security Accelerator, Independent Research of ensuring safe AI in societal proliferation",
-  nowLink: "/now.html",
-  nowLinkText: "See my full /now page \u2192",
+  nowItems: [
+    '<a href="https://effectivealtruismsf.org/">Effective Altruism San Francisco</a> Lead',
+    'Breaking Barriers <a href="https://luma.com/breaking-barriers-sf">Hackathon</a> &amp; <a href="https://luma.com/ordo572h">AIS Career Fair</a> Organizer',
+    '<a href="https://www.parentsforsafeai.org/">Parents for Safe AI</a> Strategist',
+  ],
 
   // — About —
   aboutTitle: "How I\u2019ve been shaped",
@@ -493,6 +504,13 @@ const CONTENT = {
     },
     {
       badge: "article",
+      title: "Learnings from a Viral LinkedIn Post: What AI Safety Means to Regular People",
+      desc: "Reflections on unexpected reach and what it revealed about public understanding of AI safety.",
+      link: "https://forum.effectivealtruism.org/posts/EhLhrrEEG6Jo9kYJv/learnings-from-a-viral-linkedin-post-what-ai-safety-means-to",
+      linkText: "Read on EA Forum →",
+    },
+    {
+      badge: "article",
       title: "Women empowerment on a global scale",
       desc: "Outlined notes on the work of Melinda French Gates.",
       link: "https://medium.com/@jenbb/beyond-the-pay-gap-this-book-taught-me-true-feminism-1d9147a7a2a2",
@@ -554,8 +572,7 @@ const ICONS = {
   // Now teaser (inline in hero)
   document.getElementById("hero-now").innerHTML = `
     <span class="hero-now-label">Currently up to:</span>
-    <span class="hero-now-text">${CONTENT.nowTeaser}</span>
-    <a class="hero-now-link" href="${CONTENT.nowLink}">${CONTENT.nowLinkText}</a>
+    <ul class="hero-now-list">${CONTENT.nowItems.map(item => `<li>${item}</li>`).join("")}</ul>
   `;
 
   document.getElementById("about-title").textContent = CONTENT.aboutTitle;
