@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Communities — Jen Baik</title>
+<meta name="description" content="A look at the communities Jen Baik has built, joined, and shown up for.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C9TD7RS840"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C9TD7RS840');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --white: #ffffff;
+  --bg-alt: #EEF4FB;
+  --accent: #1A6CF5;
+  --accent-bright: #3D85F7;
+  --accent-glow: rgba(26, 108, 245, 0.12);
+  --pop: #FFB930;
+  --pop-soft: #FFF3D6;
+  --text: #2C3345;
+  --text-light: #5F6983;
+  --text-faint: #9BA3B8;
+  --border: rgba(26, 108, 245, 0.08);
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --max-w: 1100px;
+  --section-py: 64px;
+}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body); background: var(--white);
+  color: var(--text); line-height: 1.72; font-weight: 400; overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--accent-bright); }
+::selection { background: var(--pop); color: var(--text); }
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.88); backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 56px;
+}
+.nav-logo {
+  font-family: var(--font-head); font-weight: 700; font-size: 1.05rem;
+  color: var(--accent); letter-spacing: -0.02em;
+}
+.nav-back {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-light);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.nav-back:hover { color: var(--accent); }
+
+.section-white { background: var(--white); }
+.section-blue { background: var(--bg-alt); }
+section { padding: var(--section-py) 32px; }
+.container { max-width: var(--max-w); margin: 0 auto; }
+.section-title {
+  font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700; color: var(--text); line-height: 1.2;
+  margin-bottom: 16px; letter-spacing: -0.03em;
+}
+.section-intro {
+  font-size: 1.02rem; color: var(--text-light); max-width: 640px; margin-bottom: 8px;
+}
+
+.page-hero { padding: 120px 32px 48px; }
+
+.community-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  margin-top: 40px;
+}
+.community-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+  display: flex; flex-direction: column;
+}
+.community-card:hover {
+  border-color: rgba(26,108,245,0.18); transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(26,108,245,0.08);
+}
+.community-photo { aspect-ratio: 4/3; background: var(--bg-alt); overflow: hidden; position: relative; }
+.community-photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .4s ease;
+}
+.community-card:hover .community-photo img { transform: scale(1.04); }
+.community-photo-placeholder {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  color: var(--text-faint); font-size: 0.8rem; text-align: center; padding: 12px;
+}
+.play-badge {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(44,51,69,0.7); color: var(--white);
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
+}
+.community-photo.logo { background: var(--white); display: flex; align-items: center; justify-content: center; padding: 28px; }
+.community-photo.logo img { width: 100%; height: 100%; object-fit: contain; }
+.community-body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+.community-title {
+  font-family: var(--font-head); font-size: 1rem; font-weight: 700;
+  color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; line-height: 1.3;
+}
+.community-location {
+  font-size: 0.76rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--accent); margin-bottom: 10px;
+}
+.community-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; flex: 1; }
+.community-link {
+  margin-top: 12px; font-size: 0.82rem; font-weight: 600; color: var(--accent);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.community-link:hover { color: var(--accent-bright); }
+
+.footer {
+  padding: 28px 32px; text-align: center;
+  border-top: 1px solid var(--border);
+  font-size: 0.76rem; color: var(--text-faint); background: var(--white);
+}
+
+.fade-up {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .community-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  :root { --section-py: 36px; }
+  section { padding: var(--section-py) 20px; }
+  .page-hero { padding: 96px 20px 32px; }
+  .nav-inner { padding: 0 20px; }
+  .community-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Jen Baik</a>
+    <a href="index.html#purpose" class="nav-back">&larr; Back to site</a>
+  </div>
+</nav>
+
+<section class="page-hero section-white">
+  <div class="container fade-up">
+    <h2 class="section-title">Communities I've Built &amp; Shown Up For</h2>
+    <p class="section-intro">From dorm hallways to off-grid homesteads, I keep finding (and founding) people trying to take care of each other. Here's a look at the communities that have shaped me.</p>
+  </div>
+</section>
+
+<section class="section-blue">
+  <div class="container fade-up">
+    <div class="community-grid" id="community-grid"></div>
+  </div>
+</section>
+
+<footer class="footer" id="footer">&copy; 2026 Jen B. Built with Jen-ergy.</footer>
+
+<script>
+const COMMUNITIES = [
+  {
+    title: "Effective Altruism SF",
+    location: "San Francisco",
+    desc: "Creating touchpoints for folks to gather about doing good for the world.",
+    img: "images/community-ea-sf-logo.png",
+    logo: true,
+    link: "https://effectivealtruismsf.org/",
+  },
+  {
+    title: "AI Safety SF",
+    location: "San Francisco",
+    desc: "Building out the AI safety talent pipeline in one of the most critical cities to ensuring it goes well.",
+    img: "images/community-ai-safety-sf.jpg",
+  },
+  {
+    title: "The Celery",
+    location: "Brooklyn",
+    desc: "Vegan/reducetarian community living home and third space for the neighborhood.",
+    img: "images/community-the-celery-brooklyn.jpg",
+  },
+  {
+    title: "Metro Caring",
+    location: "Denver",
+    desc: "Volunteer as a company to support nutritional anti-hunger efforts.",
+    img: "images/community-metro-caring-denver.jpg",
+  },
+  {
+    title: "Queen City Co-op",
+    location: "Denver",
+    desc: "Support non-profit efforts to cultivate permanent affordable housing.",
+    img: "images/community-queen-city-denver.jpg",
+  },
+  {
+    title: "Zenith",
+    location: "BC, Canada",
+    desc: "Cultivate an off-grid nature-oriented community through engaging in permaculture and biotecture efforts.",
+    img: "images/community-zenith-bc.jpg",
+    video: "https://youtu.be/cfG92VT8rsl",
+  },
+  {
+    title: "Warm Heart Hostel",
+    location: "Mexico",
+    desc: "Cultivate a safe space for expats and cultural exchange.",
+    img: "images/community-warm-heart-mexico.jpg",
+  },
+  {
+    title: "Exchange Student Group",
+    location: "Argentina",
+    desc: "Engage in cultural exchange while studying abroad.",
+    img: "images/community-exchange-argentina.jpg",
+  },
+  {
+    title: "Bridge DC",
+    location: "Washington, D.C.",
+    desc: "Learn about immigration &amp; racial justice through immersion in those local communities.",
+    img: "images/community-bridge-dc.jpg",
+  },
+  {
+    title: "Emerging Leaders",
+    location: "Pittsburgh",
+    desc: "Mentor first-years on a volunteer project for the greater Pittsburgh community.",
+    img: "images/community-emerging-leaders.jpg",
+  },
+  {
+    title: "Orientation Team for Donner House",
+    location: "Pittsburgh",
+    desc: "Support first-years through the tough transition to college life.",
+    img: "images/community-donner-orientation.jpg",
+  },
+  {
+    title: "Service Over Self",
+    location: "Memphis",
+    desc: "Volunteer to repair the roofs of locals within Memphis.",
+    img: "images/community-service-over-self.jpg",
+  },
+  {
+    title: "Love Green",
+    location: "Pittsburgh",
+    desc: "Support sustainability efforts within the greater Pittsburgh community.",
+    img: "images/community-love-green.jpg",
+  },
+];
+
+const grid = document.getElementById("community-grid");
+COMMUNITIES.forEach(c => {
+  const href = c.video || c.link;
+  const card = document.createElement(href ? "a" : "div");
+  card.className = "community-card";
+  if (href) { card.href = href; card.target = "_blank"; card.rel = "noopener"; }
+
+  let photoHtml;
+  const photoSrc = c.img || c.videoThumb;
+  if (photoSrc) {
+    const playBadge = c.video ? `<span class="play-badge">&#9654;</span>` : "";
+    photoHtml = `<div class="community-photo${c.logo ? " logo" : ""}"><img src="${photoSrc}" alt="${c.title}" loading="lazy">${playBadge}</div>`;
+  } else {
+    photoHtml = `<div class="community-photo"><div class="community-photo-placeholder">Photo coming soon</div></div>`;
+  }
+
+  const linkText = c.video ? "Watch the video &rarr;" : (c.link ? "Visit site &rarr;" : "");
+
+  card.innerHTML = `
+    ${photoHtml}
+    <div class="community-body">
+      <h3 class="community-title">${c.title}</h3>
+      <p class="community-location">${c.location}</p>
+      <p class="community-desc">${c.desc}</p>
+      ${linkText ? `<span class="community-link">${linkText}</span>` : ""}
+    </div>`;
+  grid.appendChild(card);
+});
+
+const faders = document.querySelectorAll(".fade-up");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+}, { threshold: 0.1 });
+faders.forEach(f => observer.observe(f));
+</script>
+</body>
+</html>
