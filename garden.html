@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Garden — Jen Baik</title>
+<meta name="description" content="Jen Baik's digital garden: a messy collage of the things that shaped her.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C9TD7RS840"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C9TD7RS840');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --accent: #1A6CF5; --accent-bright: #3D85F7;
+  --text: #2C3345; --text-light: #5F6983; --text-faint: #9BA3B8;
+  --border: rgba(26, 108, 245, 0.08);
+  --font-head: 'Space Grotesk', sans-serif; --font-body: 'DM Sans', sans-serif;
+}
+html { -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; line-height: 1.5; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-bright); text-decoration: underline; }
+
+.nav { max-width: 1100px; margin: 0 auto; padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { font-family: var(--font-head); font-weight: 700; color: var(--accent); }
+.nav-back { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-light); }
+
+.garden {
+  max-width: 1100px; margin: 0 auto; padding: 48px 32px 96px;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 56px 24px; align-items: start;
+}
+.garden > * { grid-column: span 12; }
+.item { font-family: var(--font-head); font-size: 1.15rem; font-weight: 500; }
+.item small { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; color: var(--text-faint); margin-top: 2px; }
+.garden img { width: 100%; height: auto; display: block; }
+
+@media (min-width: 800px) {
+  .a { grid-column: 1 / 8; }
+  .b { grid-column: 9 / 13; margin-top: 40px; }
+  .c { grid-column: 2 / 6; }
+  .d { grid-column: 7 / 12; margin-top: 60px; }
+  .e { grid-column: 1 / 5; margin-top: 20px; }
+  .f { grid-column: 6 / 10; }
+  .g { grid-column: 10 / 13; margin-top: 70px; }
+  .h { grid-column: 3 / 7; }
+}
+@media (max-width: 640px) {
+  .nav { padding: 16px 20px; }
+  .garden { padding: 32px 20px 64px; gap: 32px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Jen Baik</a>
+  <a href="index.html" class="nav-back">&larr; Back to site</a>
+</nav>
+
+<main class="garden">
+  <img class="a" src="images/garden-train.jpg" alt="Still from Spirited Away: Chihiro and No-Face on the train. Caption: I hope one day you have the courage to run away from everything that makes you miserable.">
+  <p class="item b"><a href="https://tomaslau.com/blog/doubt" target="_blank" rel="noopener">tomaslau.com/blog/doubt</a><small>formative, revisited a lot in my early 20s</small></p>
+  <p class="item c"><a href="https://markmanson.net/life-purpose" target="_blank" rel="noopener">markmanson.net/life-purpose</a><small>shared when guiding lost college students</small></p>
+  <p class="item d"><a href="https://markmanson.net/screw-finding-your-passion" target="_blank" rel="noopener">markmanson.net/screw-finding-your-passion</a><small>shared when guiding lost college students</small></p>
+  <p class="item e"><a href="https://www.workaway.info/" target="_blank" rel="noopener">workaway.info</a><small>my favorite &amp; main way to travel</small></p>
+  <p class="item f">One Hundred Years of Solitude, ~p. 327<small>Fernanda yelling at an Aureliano for 3 pages straight</small></p>
+  <p class="item g">The Goldfinch, ch. 9<small>Theo&rsquo;s detox passage</small></p>
+  <p class="item h">Stargirl</p>
+</main>
+</body>
+</html>
