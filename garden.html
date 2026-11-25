@@ -41,6 +41,9 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 .item { font-family: var(--font-head); font-size: 1.15rem; font-weight: 500; }
 .item small { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; color: var(--text-faint); margin-top: 2px; }
 .garden img { width: 100%; height: auto; display: block; }
+.book { display: block; max-width: 150px; }
+.book img { box-shadow: 0 4px 14px rgba(44,51,69,0.15); transition: transform .2s ease; }
+.book:hover img { transform: rotate(-2deg) scale(1.03); }
 
 
 .quotes { max-width: 1100px; margin: 0 auto; padding: 0 32px 96px; }
@@ -106,7 +109,7 @@ a.sticky:hover cite { color: var(--accent); }
   <p class="item e"><a href="https://www.workaway.info/" target="_blank" rel="noopener">workaway.info</a><small>my favorite &amp; main way to travel</small></p>
   <p class="item f"><a href="https://www.goodreads.com/quotes/search?q=One+Hundred+Years+of+Solitude+Fernanda" target="_blank" rel="noopener">One Hundred Years of Solitude</a>, ~p.&nbsp;327<small>Fernanda yelling at an Aureliano for 3 pages straight</small></p>
   <p class="item g"><a href="https://www.goodreads.com/quotes/search?q=The+Goldfinch+Donna+Tartt" target="_blank" rel="noopener">The Goldfinch</a>, ch. 9<small>Theo&rsquo;s detox passage</small></p>
-  <p class="item h"><a href="https://www.goodreads.com/quotes/search?q=Stargirl+Jerry+Spinelli" target="_blank" rel="noopener">Stargirl</a></p>
+  <a class="item h book" href="https://www.goodreads.com/quotes/search?q=Stargirl+Jerry+Spinelli" target="_blank" rel="noopener"><img src="images/garden-stargirl.jpg" alt="Stargirl by Jerry Spinelli, book cover"></a>
 </main>
 
 <section class="quotes">
