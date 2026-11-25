@@ -147,6 +147,14 @@ a.sticky:hover cite { color: var(--accent); }
   var cover = document.querySelector('.book'), spacer = grid.querySelector('.cover-spacer');
   function layout() {
     var gap = 18, row = 4;
+    if (cover) {
+      cover.style.marginTop = '';
+      var link = document.querySelector('.item.d'), rowRef = document.querySelector('.item.f');
+      if (window.matchMedia('(min-width: 800px)').matches && link && rowRef) {
+        var lift = link.getBoundingClientRect().bottom + 14 - rowRef.getBoundingClientRect().top;
+        cover.style.marginTop = Math.min(0, lift) + 'px';
+      }
+    }
     if (spacer) {
       spacer.style.height = '0px';
       var wide = window.matchMedia('(min-width: 961px)').matches;
