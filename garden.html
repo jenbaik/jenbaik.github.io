@@ -34,24 +34,25 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 .nav-back { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-light); }
 
 .garden {
-  max-width: 1100px; margin: 0 auto; padding: 40px 32px 64px;
+  max-width: 1100px; margin: 0 auto; padding: 32px 32px 8px;
   display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px 24px; align-items: start;
 }
 .garden > * { grid-column: span 12; }
 .item { font-family: var(--font-head); font-size: 1.15rem; font-weight: 500; }
 .item small { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; color: var(--text-faint); margin-top: 2px; }
 .garden img { width: 100%; height: auto; display: block; }
-.book { display: block; max-width: 150px; }
+.book { display: block; max-width: 112px; }
 .book img { box-shadow: 0 4px 14px rgba(44,51,69,0.15); transition: transform .2s ease; }
 .book:hover img { transform: rotate(-2deg) scale(1.03); }
 
 
 .quotes { max-width: 1100px; margin: 0 auto; padding: 0 32px 96px; }
-.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 32px; }
-.stickies { columns: 3 260px; column-gap: 28px; }
+.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 24px 0 24px; }
+.stickies { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 4px; grid-auto-flow: dense; column-gap: 18px; }
+.stickies > * { margin: 0 0 18px; align-self: start; }
 .sticky {
-  break-inside: avoid; display: inline-block; width: 100%; margin: 0 0 28px;
-  padding: 22px 22px 18px; background: #FFE9A8;
+  display: block;
+  padding: 18px 18px 14px; background: #FFE9A8;
   box-shadow: 0 4px 12px rgba(44,51,69,0.10);
   transform: rotate(var(--r, 0deg)); transition: transform .2s ease;
 }
@@ -61,14 +62,10 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 a.sticky { color: inherit; text-decoration: none; }
 a.sticky:hover { text-decoration: none; box-shadow: 0 8px 22px rgba(44,51,69,0.16); }
 a.sticky:hover cite { color: var(--accent); }
-.interlude { column-span: all; max-width: 720px; margin: 8px 0 40px; }
-.interlude.left { margin-right: auto; }
-.interlude.right { margin-left: auto; }
-.interlude .quote-img { margin-bottom: 18px; }
-.interlude { margin-left: auto; margin-right: auto; }
+.interlude { grid-column: 2 / 4; grid-row-start: 36; margin-top: 6px; }
+.interlude .quote-img { margin-bottom: 14px; }
 .interlude figcaption { font-size: 0.8rem; }
 .interlude figcaption a { color: var(--text-light); text-decoration: underline; }
-.interlude.right figcaption { text-align: right; }
 .quote-img { display: block; margin: 0 0 28px; background: #fff; box-shadow: 0 4px 12px rgba(44,51,69,0.10); transform: rotate(var(--r, 0deg)); transition: transform .2s ease; }
 .quote-img:hover { transform: rotate(0deg) scale(1.02); }
 .quote-img img { display: block; width: 100%; height: auto; }
@@ -78,20 +75,26 @@ a.sticky:hover cite { color: var(--accent); }
 .sticky cite a { color: var(--text-light); text-decoration: underline; }
 
 @media (min-width: 800px) {
-  .a { grid-column: 1 / 8; grid-row: 1 / 5; }
-  .b { grid-column: 9 / 13; grid-row: 1; margin-top: 12px; }
-  .c { grid-column: 9 / 13; grid-row: 2; padding-left: 28px; }
-  .d { grid-column: 9 / 13; grid-row: 3; }
-  .e { grid-column: 1 / 4; margin-top: 6px; }
-  .f { grid-column: 4 / 8; }
-  .g { grid-column: 8 / 11; margin-top: 20px; }
-  .h { grid-column: 11 / 13; margin-top: 4px; }
+  .a { grid-column: 1 / 7; grid-row: 1 / 5; }
+  .b { grid-column: 7 / 13; grid-row: 1; margin-top: 8px; }
+  .c { grid-column: 7 / 13; grid-row: 2; padding-left: 24px; }
+  .d { grid-column: 7 / 13; grid-row: 3; }
+  .e { grid-column: 1 / 4; grid-row: 5; margin-top: 4px; }
+  .f { grid-column: 4 / 8; grid-row: 5; }
+  .g { grid-column: 8 / 11; grid-row: 5; margin-top: 16px; }
+  .h { grid-column: 11 / 13; grid-row: 5; justify-self: start; margin: -18px 0 -64px; transform: rotate(4deg); position: relative; z-index: 1; }
+}
+@media (max-width: 960px) {
+  .stickies { grid-template-columns: repeat(2, 1fr); }
+  .interlude { grid-column: 1 / -1; grid-row-start: 30; }
 }
 @media (max-width: 640px) {
   .nav { padding: 16px 20px; }
-  .garden { padding: 32px 20px 64px; gap: 22px; }
+  .garden { padding: 24px 20px 8px; gap: 22px; }
   .quotes { padding: 0 20px 64px; }
   .sticky { transform: rotate(calc(var(--r, 0deg) * 0.5)); }
+  .stickies { grid-template-columns: 1fr; }
+  .interlude { grid-row-start: auto; }
 }
 </style>
 </head>
@@ -124,15 +127,32 @@ a.sticky:hover cite { color: var(--accent); }
     <a class="sticky" href="https://www.goodreads.com/quotes/search?q=We+don%27t+receive+wisdom%3B+we+must+discover+it+for+ourselves" target="_blank" rel="noopener" style="--r:2.5deg"><p>We don&rsquo;t receive wisdom. We must discover it for ourselves after a journey that no one can take for us or spare us.</p><cite>Marcel Proust, <em>Within a Budding Grove</em> &#8599;</cite></a>
     <a class="sticky" href="https://www.penguinrandomhouse.com/books/672554" target="_blank" rel="noopener" style="--r:-2.5deg"><p>You can&rsquo;t see the future coming &mdash; not the terrors, for sure, but you also can&rsquo;t see the wonders that are coming, the moments of light-soaked joy that await each of us.</p><cite>John Green, <em>The Anthropocene Reviewed</em> &#8599;</cite></a>
     <a class="sticky" href="https://blog.cosmos-institute.org/p/you-are-not-a-function" target="_blank" rel="noopener" style="--r:1deg"><p>You could not have planned the person you became.</p><cite>Cosmos Institute, &ldquo;You Are Not a Function&rdquo; &#8599;</cite></a>
-    <figure class="interlude"><a class="quote-img" style="--r:-0.8deg" href="https://medium.com/p/90c75eb7c5b0" target="_blank" rel="noopener"><img src="images/garden-should.jpg" alt="Elle Luna: There are two paths in life: Should and Must. We arrive at this crossroads over and over again. And each time, we get to choose. Should is how others want us to show up in the world: how we're supposed to think, what we ought to say, what we should or shouldn't do. It's the vast array of expectations that others layer upon us. When we choose Should the journey is smooth, the risk is small."></a><a class="quote-img" style="--r:0.6deg" href="https://medium.com/p/90c75eb7c5b0" target="_blank" rel="noopener"><img src="images/garden-must.jpg" alt="Elle Luna: Must is different; there aren't options and we don't have a choice. Must is who we are, what we believe, and what we do when we are alone with our truest, most authentic self. It's our instincts, our cravings and longings, the things places and ideas we burn for, the intuition that swells up from somewhere deep inside of us. Must is what happens when we stop conforming to other people's ideals and start connecting to our own. Because when we choose Must, we are no longer looking for inspiration out there. Instead, we are listening to our calling from within."></a><figcaption><a href="https://medium.com/p/90c75eb7c5b0" target="_blank" rel="noopener">Elle Luna, &ldquo;The Crossroads of Should and Must&rdquo; &#8599;</a></figcaption></figure>
     <a class="sticky" href="https://www.goodreads.com/quotes/717-be-patient-toward-all-that-is-unsolved-in-your-heart" target="_blank" rel="noopener" style="--r:-1.5deg"><p>Be patient toward all that is unsolved in your heart and try to love the questions themselves, like locked rooms and like books that are now written in a very foreign tongue. Do not now seek the answers, which cannot be given you because you would not be able to live them. And the point is, to live everything. Live the questions now. Perhaps you will then gradually, without noticing it, live along some distant day into the answer.</p><cite>Rainer Maria Rilke, <em>Letters to a Young Poet</em> &#8599;</cite></a>
+    <a class="sticky" style="--r:-1deg" href="https://www.goodreads.com/work/quotes/44223047" target="_blank" rel="noopener"><p>What do-gooders lack is not happiness but innocence. They lack that happy blindness that allows most people, most of the time, to shut their minds to what is unbearable. Do-gooders have forced themselves to know, and keep on knowing, that everything they do affects other people, and that sometimes (though not always) their joy is purchased with other people&rsquo;s joy. And, remembering that, they open themselves to a sense of unlimited, crushing responsibility.</p><cite>Larissa MacFarquhar, <em>Strangers Drowning</em> &#8599;</cite></a>
     <a class="sticky" href="https://www.goodreads.com/work/quotes/764994" target="_blank" rel="noopener" style="--r:2deg"><p>You are your own safe place, which you never entirely leave.</p><cite>Stephanie Dowrick, <em>Intimacy &amp; Solitude</em> &#8599;</cite></a>
     <a class="sticky" href="https://www.goodreads.com/work/quotes/1995335" target="_blank" rel="noopener" style="--r:1.5deg"><p>The most important thing in life is to learn how to give out love, and to let it come in. Let it come in. We think we don&rsquo;t deserve love, we think if we let it in we&rsquo;ll become too soft. But a wise man named Levin said it right. He said, &ldquo;Love is the only rational act.&rdquo;</p><cite>Mitch Albom, <em>Tuesdays with Morrie</em> &#8599;</cite></a>
     <blockquote class="sticky" style="--r:2deg"><p>But true improvements come from letting go, not from gaining.</p></blockquote>
     <a class="sticky" href="https://www.goodreads.com/work/quotes/2109790" target="_blank" rel="noopener" style="--r:-2deg"><p>Selfishness is neither good nor bad &mdash; it depends on the way we are selfish as to whether it nourishes or injures.</p><cite>Hugh Prather, <em>Notes to Myself</em> &#8599;</cite></a>
     <a class="sticky" style="--r:-2deg" href="https://www.goodreads.com/quotes/121883-life-is-a-tragedy-when-seen-in-close-up-but-a" target="_blank" rel="noopener"><p>Life is a tragedy when seen in close-up, but a comedy in long-shot.</p><cite>Charlie Chaplin &#8599;</cite></a>
-    <a class="sticky" style="--r:-1deg" href="https://www.goodreads.com/work/quotes/44223047" target="_blank" rel="noopener"><p>What do-gooders lack is not happiness but innocence. They lack that happy blindness that allows most people, most of the time, to shut their minds to what is unbearable. Do-gooders have forced themselves to know, and keep on knowing, that everything they do affects other people, and that sometimes (though not always) their joy is purchased with other people&rsquo;s joy. And, remembering that, they open themselves to a sense of unlimited, crushing responsibility.</p><cite>Larissa MacFarquhar, <em>Strangers Drowning</em> &#8599;</cite></a>
+    <figure class="interlude"><a class="quote-img" style="--r:-0.8deg" href="https://medium.com/p/90c75eb7c5b0" target="_blank" rel="noopener"><img src="images/garden-should.jpg" alt="Elle Luna: There are two paths in life: Should and Must. We arrive at this crossroads over and over again. And each time, we get to choose. Should is how others want us to show up in the world: how we're supposed to think, what we ought to say, what we should or shouldn't do. It's the vast array of expectations that others layer upon us. When we choose Should the journey is smooth, the risk is small."></a><a class="quote-img" style="--r:0.6deg" href="https://medium.com/p/90c75eb7c5b0" target="_blank" rel="noopener"><img src="images/garden-must.jpg" alt="Elle Luna: Must is different; there aren't options and we don't have a choice. Must is who we are, what we believe, and what we do when we are alone with our truest, most authentic self. It's our instincts, our cravings and longings, the things places and ideas we burn for, the intuition that swells up from somewhere deep inside of us. Must is what happens when we stop conforming to other people's ideals and start connecting to our own. Because when we choose Must, we are no longer looking for inspiration out there. Instead, we are listening to our calling from within."></a><figcaption><a href="https://medium.com/p/90c75eb7c5b0" target="_blank" rel="noopener">Elle Luna, &ldquo;The Crossroads of Should and Must&rdquo; &#8599;</a></figcaption></figure>
   </div>
   </section>
+<script>
+(function () {
+  var grid = document.querySelector('.stickies');
+  if (!grid) return;
+  function layout() {
+    var gap = 18, row = 4;
+    Array.prototype.forEach.call(grid.children, function (el) {
+      el.style.gridRowEnd = 'auto';
+      el.style.gridRowEnd = 'span ' + Math.ceil((el.offsetHeight + gap) / row);
+    });
+  }
+  window.addEventListener('load', layout);
+  window.addEventListener('resize', layout);
+  grid.querySelectorAll('img').forEach(function (img) { img.addEventListener('load', layout); });
+  layout();
+})();
+</script>
 </body>
 </html>
