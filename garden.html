@@ -34,27 +34,49 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 .nav-back { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-light); }
 
 .garden {
-  max-width: 1100px; margin: 0 auto; padding: 48px 32px 96px;
-  display: grid; grid-template-columns: repeat(12, 1fr); gap: 56px 24px; align-items: start;
+  max-width: 1100px; margin: 0 auto; padding: 40px 32px 64px;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px 24px; align-items: start;
 }
 .garden > * { grid-column: span 12; }
 .item { font-family: var(--font-head); font-size: 1.15rem; font-weight: 500; }
 .item small { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; color: var(--text-faint); margin-top: 2px; }
 .garden img { width: 100%; height: auto; display: block; }
 
+
+.quotes { max-width: 1100px; margin: 0 auto; padding: 0 32px 96px; }
+.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 32px; }
+.stickies { columns: 3 260px; column-gap: 28px; }
+.sticky {
+  break-inside: avoid; display: inline-block; width: 100%; margin: 0 0 28px;
+  padding: 22px 22px 18px; background: #FFE9A8;
+  box-shadow: 0 4px 12px rgba(44,51,69,0.10);
+  transform: rotate(var(--r, 0deg)); transition: transform .2s ease;
+}
+.sticky:nth-child(3n+2) { background: #DCEAFE; }
+.sticky:nth-child(4n+3) { background: #FFD9C7; }
+.sticky:hover { transform: rotate(0deg) scale(1.02); }
+a.sticky { color: inherit; text-decoration: none; }
+a.sticky:hover { text-decoration: none; box-shadow: 0 8px 22px rgba(44,51,69,0.16); }
+a.sticky:hover cite { color: var(--accent); }
+.sticky p { font-size: 0.98rem; line-height: 1.55; color: var(--text); }
+.sticky cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.8rem; color: var(--text-light); }
+.sticky cite a { color: var(--text-light); text-decoration: underline; }
+
 @media (min-width: 800px) {
-  .a { grid-column: 1 / 8; }
-  .b { grid-column: 9 / 13; margin-top: 40px; }
-  .c { grid-column: 2 / 6; }
-  .d { grid-column: 7 / 12; margin-top: 60px; }
-  .e { grid-column: 1 / 5; margin-top: 20px; }
-  .f { grid-column: 6 / 10; }
-  .g { grid-column: 10 / 13; margin-top: 70px; }
-  .h { grid-column: 3 / 7; }
+  .a { grid-column: 1 / 8; grid-row: 1 / 5; }
+  .b { grid-column: 9 / 13; grid-row: 1; margin-top: 12px; }
+  .c { grid-column: 9 / 13; grid-row: 2; padding-left: 28px; }
+  .d { grid-column: 9 / 13; grid-row: 3; }
+  .e { grid-column: 1 / 4; margin-top: 6px; }
+  .f { grid-column: 4 / 8; }
+  .g { grid-column: 8 / 11; margin-top: 20px; }
+  .h { grid-column: 11 / 13; margin-top: 4px; }
 }
 @media (max-width: 640px) {
   .nav { padding: 16px 20px; }
-  .garden { padding: 32px 20px 64px; gap: 32px; }
+  .garden { padding: 32px 20px 64px; gap: 22px; }
+  .quotes { padding: 0 20px 64px; }
+  .sticky { transform: rotate(calc(var(--r, 0deg) * 0.5)); }
 }
 </style>
 </head>
@@ -70,9 +92,28 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
   <p class="item c"><a href="https://markmanson.net/life-purpose" target="_blank" rel="noopener">markmanson.net/life-purpose</a><small>shared when guiding lost college students</small></p>
   <p class="item d"><a href="https://markmanson.net/screw-finding-your-passion" target="_blank" rel="noopener">markmanson.net/screw-finding-your-passion</a><small>shared when guiding lost college students</small></p>
   <p class="item e"><a href="https://www.workaway.info/" target="_blank" rel="noopener">workaway.info</a><small>my favorite &amp; main way to travel</small></p>
-  <p class="item f">One Hundred Years of Solitude, ~p. 327<small>Fernanda yelling at an Aureliano for 3 pages straight</small></p>
-  <p class="item g">The Goldfinch, ch. 9<small>Theo&rsquo;s detox passage</small></p>
-  <p class="item h">Stargirl</p>
+  <p class="item f"><a href="https://www.goodreads.com/quotes/search?q=One+Hundred+Years+of+Solitude+Fernanda" target="_blank" rel="noopener">One Hundred Years of Solitude</a>, ~p.&nbsp;327<small>Fernanda yelling at an Aureliano for 3 pages straight</small></p>
+  <p class="item g"><a href="https://www.goodreads.com/quotes/search?q=The+Goldfinch+Donna+Tartt" target="_blank" rel="noopener">The Goldfinch</a>, ch. 9<small>Theo&rsquo;s detox passage</small></p>
+  <p class="item h"><a href="https://www.goodreads.com/quotes/search?q=Stargirl+Jerry+Spinelli" target="_blank" rel="noopener">Stargirl</a></p>
 </main>
+
+<section class="quotes">
+  <h2>quotes I love</h2>
+  <div class="stickies">
+    <blockquote class="sticky" style="--r:-1.5deg"><p>There aren&rsquo;t many inspirational quotes about how discouragement will plague you as you work and that&rsquo;s just how it feels to work at something difficult. There aren&rsquo;t many memes reminding you that you won&rsquo;t get everything you dream of &mdash; and that getting everything you dream of might not make you happy anyway.</p></blockquote>
+    <a class="sticky" href="https://www.goodreads.com/quotes/search?q=The+meaning+of+life+is+just+to+be+alive" target="_blank" rel="noopener" style="--r:2deg"><p>The meaning of life is just to be alive. It is so plain and so obvious and so simple. And yet, everybody rushes around in a great panic as if it were necessary to achieve something beyond themselves.</p><cite>Alan Watts &#8599;</cite></a>
+    <blockquote class="sticky" style="--r:1deg"><p>Life not as an opportunity to implement predetermined plans for success, but as responding to the needs of your place and moment in history.</p></blockquote>
+    <blockquote class="sticky" style="--r:-2deg"><p>My actions are important, but they are not the only measure of my worth.</p></blockquote>
+    <a class="sticky" href="https://www.goodreads.com/search?q=A+New+Earth+Eckhart+Tolle" target="_blank" rel="noopener" style="--r:1.5deg"><p>Spiritual realization is to see clearly that what I perceive, experience, think, or feel is ultimately not who I am, that I cannot find myself in all those things that continuously pass away.</p><cite>Eckhart Tolle, <em>A New Earth</em> &#8599;</cite></a>
+    <a class="sticky" href="https://www.goodreads.com/quotes/search?q=How+you+journal+is+much+less+important+than+why+you+are+doing+it" target="_blank" rel="noopener" style="--r:-1deg"><p>How you journal is much less important than why you are doing it: To get something off your chest. To have quiet time with your thoughts. To clarify those thoughts. To separate the harmful from the insightful.</p><cite>Ryan Holiday &#8599;</cite></a>
+    <a class="sticky" href="https://www.goodreads.com/quotes/search?q=We+don%27t+receive+wisdom%3B+we+must+discover+it+for+ourselves" target="_blank" rel="noopener" style="--r:2.5deg"><p>We don&rsquo;t receive wisdom. We must discover it for ourselves after a journey that no one can take for us or spare us.</p><cite>Marcel Proust &#8599;</cite></a>
+    <a class="sticky" href="https://www.goodreads.com/search?q=The+Anthropocene+Reviewed+John+Green" target="_blank" rel="noopener" style="--r:-2.5deg"><p>You can&rsquo;t see the future coming &mdash; not the terrors, for sure, but you also can&rsquo;t see the wonders that are coming, the moments of light-soaked joy that await each of us.</p><cite>John Green, <em>The Anthropocene Reviewed</em> &#8599;</cite></a>
+    <a class="sticky" href="https://www.google.com/search?q=%22You+Are+Not+a+Function%22+Cosmos+Institute" target="_blank" rel="noopener" style="--r:1deg"><p>You could not have planned the person you became.</p><cite>Cosmos Institute, &ldquo;You Are Not a Function&rdquo; &#8599;</cite></a>
+    <a class="sticky" href="https://www.goodreads.com/quotes/717-be-patient-toward-all-that-is-unsolved-in-your-heart" target="_blank" rel="noopener" style="--r:-1.5deg"><p>Be patient toward all that is unsolved in your heart and try to love the questions themselves, like locked rooms and like books that are now written in a very foreign tongue. Do not now seek the answers, which cannot be given you because you would not be able to live them. And the point is, to live everything. Live the questions now. Perhaps you will then gradually, without noticing it, live along some distant day into the answer.</p><cite>Rainer Maria Rilke, <em>Letters to a Young Poet</em> &#8599;</cite></a>
+    <a class="sticky" href="https://www.goodreads.com/search?q=Intimacy+and+Solitude+Stephanie+Dowrick" target="_blank" rel="noopener" style="--r:2deg"><p>You are your own safe place, which you never entirely leave.</p><cite>Stephanie Dowrick, <em>Intimacy &amp; Solitude</em> &#8599;</cite></a>
+    <a class="sticky" href="https://www.goodreads.com/search?q=Notes+to+Myself+Hugh+Prather" target="_blank" rel="noopener" style="--r:-2deg"><p>Selfishness is neither good nor bad &mdash; it depends on the way we are selfish as to whether it nourishes or injures.</p><cite>Hugh Prather, <em>Notes to Myself</em> &#8599;</cite></a>
+    <a class="sticky" href="https://www.goodreads.com/work/quotes/1995335" target="_blank" rel="noopener" style="--r:1.5deg"><p>The most important thing in life is to learn how to give out love, and to let it come in. Let it come in. We think we don&rsquo;t deserve love, we think if we let it in we&rsquo;ll become too soft. But a wise man named Levin said it right. He said, &ldquo;Love is the only rational act.&rdquo;</p><cite>Mitch Albom, <em>Tuesdays with Morrie</em> &#8599;</cite></a>
+  </div>
+</section>
 </body>
 </html>
