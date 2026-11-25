@@ -34,20 +34,20 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 .nav-back { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-light); }
 
 .garden {
-  max-width: 1100px; margin: 0 auto; padding: 32px 32px 8px;
+  max-width: 1100px; margin: 0 auto; padding: 32px 32px 0;
   display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px 24px; align-items: start;
 }
 .garden > * { grid-column: span 12; }
 .item { font-family: var(--font-head); font-size: 1.15rem; font-weight: 500; }
 .item small { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; color: var(--text-faint); margin-top: 2px; }
 .garden img { width: 100%; height: auto; display: block; }
-.book { display: block; max-width: 112px; }
-.book img { box-shadow: 0 4px 14px rgba(44,51,69,0.15); transition: transform .2s ease; }
+.book { display: block; width: 62%; max-width: 160px; justify-self: center; transform: rotate(var(--r, 0deg)); margin-top: 6px !important; }
+.book img { width: 100%; height: auto; display: block;  box-shadow: 0 4px 14px rgba(44,51,69,0.15); transition: transform .2s ease; }
 .book:hover img { transform: rotate(-2deg) scale(1.03); }
 
 
 .quotes { max-width: 1100px; margin: 0 auto; padding: 0 32px 96px; }
-.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 24px 0 24px; }
+.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 18px 0 12px; }
 .stickies { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 4px; grid-auto-flow: dense; column-gap: 18px; }
 .stickies > * { margin: 0 0 18px; align-self: start; }
 .sticky {
@@ -82,7 +82,6 @@ a.sticky:hover cite { color: var(--accent); }
   .e { grid-column: 1 / 4; grid-row: 5; margin-top: 4px; }
   .f { grid-column: 4 / 8; grid-row: 5; }
   .g { grid-column: 8 / 11; grid-row: 5; margin-top: 16px; }
-  .h { grid-column: 11 / 13; grid-row: 5; justify-self: start; margin: -18px 0 -64px; transform: rotate(4deg); position: relative; z-index: 1; }
 }
 @media (max-width: 960px) {
   .stickies { grid-template-columns: repeat(2, 1fr); }
@@ -90,7 +89,7 @@ a.sticky:hover cite { color: var(--accent); }
 }
 @media (max-width: 640px) {
   .nav { padding: 16px 20px; }
-  .garden { padding: 24px 20px 8px; gap: 22px; }
+  .garden { padding: 24px 20px 0; gap: 22px; }
   .quotes { padding: 0 20px 64px; }
   .sticky { transform: rotate(calc(var(--r, 0deg) * 0.5)); }
   .stickies { grid-template-columns: 1fr; }
@@ -112,12 +111,12 @@ a.sticky:hover cite { color: var(--accent); }
   <p class="item e"><a href="https://www.workaway.info/" target="_blank" rel="noopener">workaway.info</a><small>my favorite &amp; main way to travel</small></p>
   <p class="item f"><a href="https://www.goodreads.com/quotes/search?q=One+Hundred+Years+of+Solitude+Fernanda" target="_blank" rel="noopener">One Hundred Years of Solitude</a>, ~p.&nbsp;327<small>Fernanda yelling at an Aureliano for 3 pages straight</small></p>
   <p class="item g"><a href="https://www.goodreads.com/quotes/search?q=The+Goldfinch+Donna+Tartt" target="_blank" rel="noopener">The Goldfinch</a>, ch. 9<small>Theo&rsquo;s detox passage</small></p>
-  <a class="item h book" href="https://www.goodreads.com/quotes/search?q=Stargirl+Jerry+Spinelli" target="_blank" rel="noopener"><img src="images/garden-stargirl.jpg" alt="Stargirl by Jerry Spinelli, book cover"></a>
 </main>
 
 <section class="quotes">
   <h2>quotes I love</h2>
   <div class="stickies">
+    <a class="book" style="--r:4deg" href="https://www.goodreads.com/quotes/search?q=Stargirl+Jerry+Spinelli" target="_blank" rel="noopener"><img src="images/garden-stargirl.jpg" alt="Stargirl by Jerry Spinelli, book cover"></a>
     <blockquote class="sticky" style="--r:-1.5deg"><p>There aren&rsquo;t many inspirational quotes about how discouragement will plague you as you work and that&rsquo;s just how it feels to work at something difficult. There aren&rsquo;t many memes reminding you that you won&rsquo;t get everything you dream of &mdash; and that getting everything you dream of might not make you happy anyway.</p></blockquote>
     <a class="sticky" href="https://www.goodreads.com/quotes/search?q=The+meaning+of+life+is+just+to+be+alive" target="_blank" rel="noopener" style="--r:2deg"><p>The meaning of life is just to be alive. It is so plain and so obvious and so simple. And yet, everybody rushes around in a great panic as if it were necessary to achieve something beyond themselves.</p><cite>Alan Watts &#8599;</cite></a>
     <a class="sticky" style="--r:1deg" href="https://oliverburkeman.com/fourthousandweeks" target="_blank" rel="noopener"><p>Life not as an opportunity to implement predetermined plans for success, but as responding to the needs of your place and moment in history.</p><cite>Oliver Burkeman, <em>Four Thousand Weeks</em> &#8599;</cite></a>
