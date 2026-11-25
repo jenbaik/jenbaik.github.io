@@ -34,7 +34,7 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 .nav-back { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-light); }
 
 .garden {
-  max-width: 1100px; margin: 0 auto; padding: 40px 32px 64px;
+  max-width: 1100px; margin: 0 auto; padding: 32px 32px 8px;
   display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px 24px; align-items: start;
 }
 .garden > * { grid-column: span 12; }
@@ -47,7 +47,7 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 
 
 .quotes { max-width: 1100px; margin: 0 auto; padding: 0 32px 96px; }
-.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 32px; }
+.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 24px 0 24px; }
 .stickies { columns: 3 260px; column-gap: 28px; }
 .sticky {
   break-inside: avoid; display: inline-block; width: 100%; margin: 0 0 28px;
@@ -78,18 +78,18 @@ a.sticky:hover cite { color: var(--accent); }
 .sticky cite a { color: var(--text-light); text-decoration: underline; }
 
 @media (min-width: 800px) {
-  .a { grid-column: 1 / 8; grid-row: 1 / 5; }
-  .b { grid-column: 9 / 13; grid-row: 1; margin-top: 12px; }
-  .c { grid-column: 9 / 13; grid-row: 2; padding-left: 28px; }
-  .d { grid-column: 9 / 13; grid-row: 3; }
-  .e { grid-column: 1 / 4; margin-top: 6px; }
-  .f { grid-column: 4 / 8; }
-  .g { grid-column: 8 / 11; margin-top: 20px; }
-  .h { grid-column: 11 / 13; margin-top: 4px; }
+  .a { grid-column: 1 / 7; grid-row: 1 / 5; }
+  .b { grid-column: 7 / 11; grid-row: 1; margin-top: 8px; }
+  .c { grid-column: 7 / 11; grid-row: 2; padding-left: 24px; }
+  .d { grid-column: 7 / 11; grid-row: 3; }
+  .h { grid-column: 11 / 13; grid-row: 1 / 5; margin-top: 36px; justify-self: end; transform: rotate(2.5deg); }
+  .e { grid-column: 1 / 4; grid-row: 5; margin-top: 4px; }
+  .f { grid-column: 4 / 8; grid-row: 5; }
+  .g { grid-column: 8 / 12; grid-row: 5; margin-top: 16px; }
 }
 @media (max-width: 640px) {
   .nav { padding: 16px 20px; }
-  .garden { padding: 32px 20px 64px; gap: 22px; }
+  .garden { padding: 24px 20px 8px; gap: 22px; }
   .quotes { padding: 0 20px 64px; }
   .sticky { transform: rotate(calc(var(--r, 0deg) * 0.5)); }
 }
