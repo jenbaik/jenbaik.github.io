@@ -15,7 +15,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -23,6 +23,7 @@
   --text: #2C3345; --text-light: #5F6983; --text-faint: #9BA3B8;
   --border: rgba(26, 108, 245, 0.08);
   --font-head: 'Space Grotesk', sans-serif; --font-body: 'DM Sans', sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
 }
 html { -webkit-font-smoothing: antialiased; }
 body { font-family: var(--font-body); color: var(--text); background: #fff; line-height: 1.5; }
@@ -38,26 +39,40 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
   display: grid; grid-template-columns: repeat(12, 1fr); gap: 56px 24px; align-items: start;
 }
 .garden > * { grid-column: span 12; }
-.item { font-family: var(--font-head); font-size: 1.15rem; font-weight: 500; }
-.item small { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; color: var(--text-faint); margin-top: 2px; }
+.item { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 400; }
+.item a { color: var(--text); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.item a:hover { color: var(--accent); }
+.item small { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; color: var(--text-light); margin-top: 2px; }
 .garden img { width: 100%; height: auto; display: block; }
 
 
-.quotes { max-width: 1100px; margin: 0 auto; padding: 0 32px 96px; }
-.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 32px; }
-.stickies { columns: 3 260px; column-gap: 28px; }
-.sticky {
-  break-inside: avoid; display: inline-block; width: 100%; margin: 0 0 28px;
-  padding: 22px 22px 18px; background: #FFE9A8;
-  box-shadow: 0 4px 12px rgba(44,51,69,0.10);
-  transform: rotate(var(--r, 0deg)); transition: transform .2s ease;
+.quotes { max-width: 1100px; margin: 0 auto; padding: 16px 32px 120px; }
+.quotes h2 { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 1.6rem; color: var(--text); margin-bottom: 36px; }
+.wall { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 34px 30px; }
+.note {
+  position: relative; margin-top: var(--dy, 0);
+  background: #FDF2A0;
+  background-image: linear-gradient(rgba(120,90,0,0.05) 0 14%, transparent 14%);
+  transform: rotate(var(--r, 0deg));
+  box-shadow: 0 1px 1px rgba(60,50,10,0.10), 0 14px 10px -12px rgba(60,50,10,0.30);
+  font-family: var(--font-serif); color: #2a2a2a;
 }
-.sticky:nth-child(3n+2) { background: #DCEAFE; }
-.sticky:nth-child(4n+3) { background: #FFD9C7; }
-.sticky:hover { transform: rotate(0deg) scale(1.02); }
-.sticky p { font-size: 0.98rem; line-height: 1.55; color: var(--text); }
-.sticky cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.8rem; color: var(--text-light); }
-.sticky cite a { color: var(--text-light); text-decoration: underline; }
+.note p { font-size: 1.02rem; line-height: 1.5; }
+.note.s { width: 210px; aspect-ratio: 1; padding: 28px 22px 20px; }
+.note.s p { font-size: 1.28rem; line-height: 1.3; }
+.note.m { width: 250px; aspect-ratio: 1; padding: 30px 24px 22px; }
+.note.l {
+  width: 340px; padding: 34px 28px 26px;
+  background-image:
+    linear-gradient(rgba(120,90,0,0.05) 0 44px, transparent 44px),
+    repeating-linear-gradient(transparent 0 25px, rgba(80,110,170,0.22) 25px 26px);
+  background-position: 0 0, 0 3px;
+}
+.note.l p { line-height: 26px; font-size: 0.98rem; }
+.by { display: block; margin-top: 8px; font-size: 0.92rem; line-height: 1.35; }
+.note.l .by { margin-top: 0; line-height: 26px; }
+.by a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.by a:hover { color: #8a5a00; }
 
 @media (min-width: 800px) {
   .a { grid-column: 1 / 8; }
@@ -72,8 +87,10 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 @media (max-width: 640px) {
   .nav { padding: 16px 20px; }
   .garden { padding: 32px 20px 64px; gap: 32px; }
-  .quotes { padding: 0 20px 64px; }
-  .sticky { transform: rotate(calc(var(--r, 0deg) * 0.5)); }
+  .quotes { padding: 8px 20px 72px; }
+  .wall { justify-content: center; gap: 28px; }
+  .note { margin-top: 0; }
+  .note.l { width: 100%; }
 }
 </style>
 </head>
@@ -89,27 +106,27 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
   <p class="item c"><a href="https://markmanson.net/life-purpose" target="_blank" rel="noopener">markmanson.net/life-purpose</a><small>shared when guiding lost college students</small></p>
   <p class="item d"><a href="https://markmanson.net/screw-finding-your-passion" target="_blank" rel="noopener">markmanson.net/screw-finding-your-passion</a><small>shared when guiding lost college students</small></p>
   <p class="item e"><a href="https://www.workaway.info/" target="_blank" rel="noopener">workaway.info</a><small>my favorite &amp; main way to travel</small></p>
-  <p class="item f">One Hundred Years of Solitude, ~p. 327<small>Fernanda yelling at an Aureliano for 3 pages straight</small></p>
-  <p class="item g">The Goldfinch, ch. 9<small>Theo&rsquo;s detox passage</small></p>
-  <p class="item h">Stargirl</p>
+  <p class="item f"><i>One Hundred Years of Solitude</i>, around p.&nbsp;327<small>Fernanda yelling at an Aureliano for 3 pages straight</small></p>
+  <p class="item g"><i>The Goldfinch</i>, ch. 9<small>Theo&rsquo;s detox passage</small></p>
+  <p class="item h"><i>Stargirl</i></p>
 </main>
 
 <section class="quotes">
-  <h2>quotes I love</h2>
-  <div class="stickies">
-    <blockquote class="sticky" style="--r:-1.5deg"><p>There aren&rsquo;t many inspirational quotes about how discouragement will plague you as you work and that&rsquo;s just how it feels to work at something difficult. There aren&rsquo;t many memes reminding you that you won&rsquo;t get everything you dream of &mdash; and that getting everything you dream of might not make you happy anyway.</p></blockquote>
-    <blockquote class="sticky" style="--r:2deg"><p>&ldquo;The meaning of life is just to be alive. It is so plain and so obvious and so simple. And yet, everybody rushes around in a great panic as if it were necessary to achieve something beyond themselves.&rdquo;</p><cite>Alan Watts</cite></blockquote>
-    <blockquote class="sticky" style="--r:1deg"><p>Life not as an opportunity to implement predetermined plans for success, but as responding to the needs of your place and moment in history.</p></blockquote>
-    <blockquote class="sticky" style="--r:-2deg"><p>My actions are important, but they are not the only measure of my worth.</p></blockquote>
-    <blockquote class="sticky" style="--r:1.5deg"><p>Spiritual realization is to see clearly that what I perceive, experience, think, or feel is ultimately not who I am, that I cannot find myself in all those things that continuously pass away.</p><cite>Eckhart Tolle, <em>A New Earth</em></cite></blockquote>
-    <blockquote class="sticky" style="--r:-1deg"><p>How you journal is much less important than why you are doing it: To get something off your chest. To have quiet time with your thoughts. To clarify those thoughts. To separate the harmful from the insightful.</p><cite>Ryan Holiday</cite></blockquote>
-    <blockquote class="sticky" style="--r:2.5deg"><p>We don&rsquo;t receive wisdom. We must discover it for ourselves after a journey that no one can take for us or spare us.</p><cite>Marcel Proust</cite></blockquote>
-    <blockquote class="sticky" style="--r:-2.5deg"><p>&ldquo;You can&rsquo;t see the future coming &mdash; not the terrors, for sure, but you also can&rsquo;t see the wonders that are coming, the moments of light-soaked joy that await each of us.&rdquo;</p><cite>John Green, <em>The Anthropocene Reviewed</em></cite></blockquote>
-    <blockquote class="sticky" style="--r:1deg"><p>You could not have planned the person you became.</p><cite>Cosmos Institute, &ldquo;You Are Not a Function&rdquo;</cite></blockquote>
-    <blockquote class="sticky" style="--r:-1.5deg"><p>&ldquo;Be patient toward all that is unsolved in your heart and try to love the questions themselves, like locked rooms and like books that are now written in a very foreign tongue. Do not now seek the answers, which cannot be given you because you would not be able to live them. And the point is, to live everything. Live the questions now. Perhaps you will then gradually, without noticing it, live along some distant day into the answer.&rdquo;</p><cite><a href="https://www.goodreads.com/quotes/717-be-patient-toward-all-that-is-unsolved-in-your-heart" target="_blank" rel="noopener">Rainer Maria Rilke, <em>Letters to a Young Poet</em></a></cite></blockquote>
-    <blockquote class="sticky" style="--r:2deg"><p>You are your own safe place, which you never entirely leave.</p><cite>Stephanie Dowrick, <em>Intimacy &amp; Solitude</em></cite></blockquote>
-    <blockquote class="sticky" style="--r:-2deg"><p>Selfishness is neither good nor bad &mdash; it depends on the way we are selfish as to whether it nourishes or injures.</p><cite>Hugh Prather, <em>Notes to Myself</em></cite></blockquote>
-    <blockquote class="sticky" style="--r:1.5deg"><p>&ldquo;The most important thing in life is to learn how to give out love, and to let it come in. Let it come in. We think we don&rsquo;t deserve love, we think if we let it in we&rsquo;ll become too soft. But a wise man named Levin said it right. He said, &lsquo;Love is the only rational act.&rsquo;&rdquo;</p><cite><a href="https://www.goodreads.com/work/quotes/1995335" target="_blank" rel="noopener">Mitch Albom, <em>Tuesdays with Morrie</em></a></cite></blockquote>
+  <h2>Quotes I love</h2>
+  <div class="wall">
+    <figure class="note l" style="--r:-1.2deg;--dy:0px"><p>There aren&rsquo;t many inspirational quotes about how discouragement will plague you as you work and that&rsquo;s just how it feels to work at something difficult. There aren&rsquo;t many memes reminding you that you won&rsquo;t get everything you dream of, and that getting everything you dream of might not make you happy anyway.</p></figure>
+    <figure class="note s" style="--r:0deg;--dy:26px"><p>You are your own safe place, which you never entirely leave. <span class="by">&mdash; <a href="https://www.goodreads.com/search?q=Intimacy+and+Solitude+Stephanie+Dowrick" target="_blank" rel="noopener">Stephanie Dowrick, <i>Intimacy &amp; Solitude</i></a></span></p></figure>
+    <figure class="note m" style="--r:2.4deg;--dy:8px"><p>The meaning of life is just to be alive. It is so plain and so obvious and so simple. And yet, everybody rushes around in a great panic as if it were necessary to achieve something beyond themselves. <span class="by">&mdash; <a href="https://www.goodreads.com/quotes/search?q=The+meaning+of+life+is+just+to+be+alive" target="_blank" rel="noopener">Alan Watts</a></span></p></figure>
+    <figure class="note s" style="--r:0deg;--dy:0px"><p>My actions are important, but they are not the only measure of my worth.</p></figure>
+    <figure class="note l" style="--r:0.6deg;--dy:18px"><p>Be patient toward all that is unsolved in your heart and try to love the questions themselves, like locked rooms and like books that are now written in a very foreign tongue. Do not now seek the answers, which cannot be given you because you would not be able to live them. And the point is, to live everything. Live the questions now. Perhaps you will then gradually, without noticing it, live along some distant day into the answer. <span class="by">&mdash; <a href="https://www.goodreads.com/quotes/717-be-patient-toward-all-that-is-unsolved-in-your-heart" target="_blank" rel="noopener">Rainer Maria Rilke, <i>Letters to a Young Poet</i></a></span></p></figure>
+    <figure class="note s" style="--r:-3.5deg;--dy:4px"><p>We don&rsquo;t receive wisdom. We must discover it for ourselves after a journey that no one can take for us or spare us. <span class="by">&mdash; <a href="https://www.goodreads.com/quotes/search?q=We+don%27t+receive+wisdom%3B+we+must+discover+it+for+ourselves" target="_blank" rel="noopener">Marcel Proust</a></span></p></figure>
+    <figure class="note m" style="--r:0deg;--dy:0px"><p>Spiritual realization is to see clearly that what I perceive, experience, think, or feel is ultimately not who I am, that I cannot find myself in all those things that continuously pass away. <span class="by">&mdash; <a href="https://www.goodreads.com/search?q=A+New+Earth+Eckhart+Tolle" target="_blank" rel="noopener">Eckhart Tolle, <i>A New Earth</i></a></span></p></figure>
+    <figure class="note m" style="--r:-0.8deg;--dy:30px"><p>Life not as an opportunity to implement predetermined plans for success, but as responding to the needs of your place and moment in history.</p></figure>
+    <figure class="note s" style="--r:1.6deg;--dy:0px"><p>You could not have planned the person you became. <span class="by">&mdash; <a href="https://www.google.com/search?q=%22You+Are+Not+a+Function%22+Cosmos+Institute" target="_blank" rel="noopener">Cosmos Institute, <i>You Are Not a Function</i></a></span></p></figure>
+    <figure class="note l" style="--r:-0.4deg;--dy:10px"><p>The most important thing in life is to learn how to give out love, and to let it come in. Let it come in. We think we don&rsquo;t deserve love, we think if we let it in we&rsquo;ll become too soft. But a wise man named Levin said it right. He said, &ldquo;Love is the only rational act.&rdquo; <span class="by">&mdash; <a href="https://www.goodreads.com/work/quotes/1995335" target="_blank" rel="noopener">Mitch Albom, <i>Tuesdays with Morrie</i></a></span></p></figure>
+    <figure class="note m" style="--r:0deg;--dy:0px"><p>How you journal is much less important than why you are doing it: to get something off your chest, to have quiet time with your thoughts, to clarify those thoughts, to separate the harmful from the insightful. <span class="by">&mdash; <a href="https://www.goodreads.com/quotes/search?q=How+you+journal+is+much+less+important+than+why+you+are+doing+it" target="_blank" rel="noopener">Ryan Holiday</a></span></p></figure>
+    <figure class="note s" style="--r:-1.9deg;--dy:22px"><p>Selfishness is neither good nor bad. It depends on the way we are selfish as to whether it nourishes or injures. <span class="by">&mdash; <a href="https://www.goodreads.com/search?q=Notes+to+Myself+Hugh+Prather" target="_blank" rel="noopener">Hugh Prather, <i>Notes to Myself</i></a></span></p></figure>
+    <figure class="note m" style="--r:1deg;--dy:6px"><p>You can&rsquo;t see the future coming, not the terrors, for sure, but you also can&rsquo;t see the wonders that are coming, the moments of light-soaked joy that await each of us. <span class="by">&mdash; <a href="https://www.goodreads.com/search?q=The+Anthropocene+Reviewed+John+Green" target="_blank" rel="noopener">John Green, <i>The Anthropocene Reviewed</i></a></span></p></figure>
   </div>
 </section>
 </body>
