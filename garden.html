@@ -34,22 +34,23 @@ a:hover { color: var(--accent-bright); text-decoration: underline; }
 .nav-back { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-light); }
 
 .garden {
-  max-width: 1100px; margin: 0 auto; padding: 32px 32px 8px;
+  max-width: 1100px; margin: 0 auto; padding: 32px 32px 0;
   display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px 24px; align-items: start;
 }
 .garden > * { grid-column: span 12; }
 .item { font-family: var(--font-head); font-size: 1.15rem; font-weight: 500; }
 .item small { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; color: var(--text-faint); margin-top: 2px; }
 .garden img { width: 100%; height: auto; display: block; }
-.book { display: block; max-width: 112px; }
-.book img { box-shadow: 0 4px 14px rgba(44,51,69,0.15); transition: transform .2s ease; }
+.book { display: block; width: 120px; transform: rotate(4deg); position: relative; z-index: 1; }
+.book img { width: 100%; height: auto; display: block;  box-shadow: 0 4px 14px rgba(44,51,69,0.15); transition: transform .2s ease; }
 .book:hover img { transform: rotate(-2deg) scale(1.03); }
 
 
 .quotes { max-width: 1100px; margin: 0 auto; padding: 0 32px 96px; }
-.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 24px 0 24px; }
+.quotes h2 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 6px 0 12px; }
 .stickies { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 4px; grid-auto-flow: dense; column-gap: 18px; }
 .stickies > * { margin: 0 0 18px; align-self: start; }
+.cover-spacer { grid-column: 4; grid-row-start: 1; margin: 0 !important; }
 .sticky {
   display: block;
   padding: 18px 18px 14px; background: #FFE9A8;
@@ -82,15 +83,16 @@ a.sticky:hover cite { color: var(--accent); }
   .e { grid-column: 1 / 4; grid-row: 5; margin-top: 4px; }
   .f { grid-column: 4 / 8; grid-row: 5; }
   .g { grid-column: 8 / 11; grid-row: 5; margin-top: 16px; }
-  .h { grid-column: 11 / 13; grid-row: 5; justify-self: start; margin: -18px 0 -64px; transform: rotate(4deg); position: relative; z-index: 1; }
+  .h { grid-column: 11 / 13; grid-row: 5; justify-self: start; margin: 0 0 -400px 4px; align-self: start; }
 }
 @media (max-width: 960px) {
+  .h { margin-bottom: 0 !important; }
   .stickies { grid-template-columns: repeat(2, 1fr); }
   .interlude { grid-column: 1 / -1; grid-row-start: 30; }
 }
 @media (max-width: 640px) {
   .nav { padding: 16px 20px; }
-  .garden { padding: 24px 20px 8px; gap: 22px; }
+  .garden { padding: 24px 20px 0; gap: 22px; }
   .quotes { padding: 0 20px 64px; }
   .sticky { transform: rotate(calc(var(--r, 0deg) * 0.5)); }
   .stickies { grid-template-columns: 1fr; }
@@ -118,6 +120,7 @@ a.sticky:hover cite { color: var(--accent); }
 <section class="quotes">
   <h2>quotes I love</h2>
   <div class="stickies">
+    <div class="cover-spacer" aria-hidden="true"></div>
     <blockquote class="sticky" style="--r:-1.5deg"><p>There aren&rsquo;t many inspirational quotes about how discouragement will plague you as you work and that&rsquo;s just how it feels to work at something difficult. There aren&rsquo;t many memes reminding you that you won&rsquo;t get everything you dream of &mdash; and that getting everything you dream of might not make you happy anyway.</p></blockquote>
     <a class="sticky" href="https://www.goodreads.com/quotes/search?q=The+meaning+of+life+is+just+to+be+alive" target="_blank" rel="noopener" style="--r:2deg"><p>The meaning of life is just to be alive. It is so plain and so obvious and so simple. And yet, everybody rushes around in a great panic as if it were necessary to achieve something beyond themselves.</p><cite>Alan Watts &#8599;</cite></a>
     <a class="sticky" style="--r:1deg" href="https://oliverburkeman.com/fourthousandweeks" target="_blank" rel="noopener"><p>Life not as an opportunity to implement predetermined plans for success, but as responding to the needs of your place and moment in history.</p><cite>Oliver Burkeman, <em>Four Thousand Weeks</em> &#8599;</cite></a>
@@ -141,8 +144,19 @@ a.sticky:hover cite { color: var(--accent); }
 (function () {
   var grid = document.querySelector('.stickies');
   if (!grid) return;
+  var cover = document.querySelector('.book'), spacer = grid.querySelector('.cover-spacer');
   function layout() {
     var gap = 18, row = 4;
+    if (spacer) {
+      spacer.style.height = '0px';
+      var wide = window.matchMedia('(min-width: 961px)').matches;
+      var need = 0;
+      if (wide && cover) {
+        need = Math.ceil(cover.getBoundingClientRect().bottom - grid.getBoundingClientRect().top + 10);
+      }
+      spacer.style.display = need > 0 ? 'block' : 'none';
+      spacer.style.height = Math.max(0, need - gap) + 'px';
+    }
     Array.prototype.forEach.call(grid.children, function (el) {
       el.style.gridRowEnd = 'auto';
       el.style.gridRowEnd = 'span ' + Math.ceil((el.offsetHeight + gap) / row);
